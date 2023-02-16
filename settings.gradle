@@ -1,0 +1,3 @@
+rootProject.name = "Calender-Custom"
+include ':app'
+include ':Library-Calender-Custom-View'
