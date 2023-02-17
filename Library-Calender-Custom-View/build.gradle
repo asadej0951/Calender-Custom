@@ -46,25 +46,25 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId 'com.github.asadej0951'
-                artifactId 'Calender-Custom'
-                version = '1.0.2'
-            }
-        }
-    }
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
 }
 
-android {
-    publishing {
-        singleVariant("release") {
-            // if you don't want sources/javadoc, remove these lines
-            withSourcesJar()
-            withJavadocJar()
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId 'com.github.asadej0951'
+            artifactId 'Calender-Custom'
+            version = '1.0.2'
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/bar-release.aar")
+        }
+    }
+    repositories {
+        maven {
+            url "$buildDir/repo"
         }
     }
 }
