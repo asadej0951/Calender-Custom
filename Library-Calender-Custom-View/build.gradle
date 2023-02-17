@@ -28,11 +28,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    allprojects {
-        repositories {
-            maven { url 'https://jitpack.io' }
-        }
-    }
 }
 
 dependencies {
@@ -57,7 +52,7 @@ publishing {
         bar(MavenPublication) {
             groupId 'com.github.asadej0951'
             artifactId 'Calender-Custom'
-            version = '1.0.2'
+            version = '1.0.3'
             artifact(sourceJar)
             artifact("$buildDir/outputs/aar/bar-release.aar")
         }
